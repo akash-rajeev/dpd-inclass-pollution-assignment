@@ -1,0 +1,37 @@
+---
+title: "In Class Assignment 09.02.2025"
+author: "Akash Rajeev"
+date: "2025-09-02"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(data.table)
+library(dplyr)
+```
+
+```{r}
+nypol = fread("ny_pollution.csv.gz")
+nypol %>% 
+  head(10)
+
+nypolbox = boxplot(nypol$pollution, horizontal = TRUE, xlab = "Pollution value", main = "Boxplot of pollution values in New York")
+
+nypolhist = hist(nypol$pollution, xlab = "Distribution of pollution values", main = "Histogram of pollution values in New York")
+
+```
+```{r}
+mean(nypol$pollution, na.rm = T)
+median(nypol$pollution, na.rm = T)
+
+
+```
+# Statement and Supporting Premise
+
+Statement: The Pollution data in this dataset is right skewed.
+
+Supporting Premise: The histogram and boxplot demonstrate that the data may exhibit a skew to the right. Additionally, the mean is greater than the median, which may also indicate a slight right skew.
+
